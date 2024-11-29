@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirect Handler</title>
+</head>
+<body>
+  <h1>Redirecting...</h1>
+  <script>
+    // You can extract the OAuth code from the URL (e.g., from `code` query param)
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+
+    // Perform the next step, like sending the code to your server or app
+    if (code) {
+      window.location.href = `awesomeproject://auth?code=${code}`;
+    }
+  </script>
+</body>
+</html>
