@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -15,6 +15,35 @@
     // Perform the next step, like sending the code to your server or app
     if (code) {
       window.location.href = `awesomeproject://auth?code=${code}`;
+    }
+  </script>
+</body>
+</html>
+ -->
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirect Handler</title>
+</head>
+<body>
+  <h1>Redirecting...</h1>
+  <script>
+    // Extract the OAuth code from the URL (from `code` query param)
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+
+    if (code) {
+      // Replace 'awesomeproject' with your custom scheme (use 'awesomeproject://auth' for deep linking)
+      const deepLinkURL = `awesomeproject://auth?code=${code}`;
+
+      // Redirect the user back to the app using the custom scheme
+      window.location.href = deepLinkURL;
+    } else {
+      // If no code is found, handle error (you can also alert the user)
+      console.error("Authorization code not found in the URL");
     }
   </script>
 </body>
